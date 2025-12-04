@@ -53,14 +53,36 @@ Step 7: Save Your Work
 
 
 ## Code:
-
+```
+#define echoPin 2 
+#define trigPin 3 
+long duration; 
+int distance; 
+void setup() 
+{ 
+  pinMode(trigPin, OUTPUT); 
+  pinMode(echoPin, INPUT); 
+  Serial.begin(9600); 
+} 
+void loop()
+{ 
+  digitalWrite(trigPin, LOW); 
+  delayMicroseconds(2); 
+  digitalWrite(trigPin, HIGH); 
+  delayMicroseconds(10); 
+  digitalWrite(trigPin, LOW); 
+  duration = pulseIn(echoPin, HIGH); 
+  distance = duration * 0.034 / 2; 
+  Serial.print("Distance: "); 
+  Serial.print(distance); 
+  Serial.println(" cm"); 
+}
+```
 
 ## Output:
+<img width="1919" height="857" alt="image" src="https://github.com/user-attachments/assets/43dd7a25-1892-4fa2-9632-e438ffb1c2fa" />
  
 
 
 ## Result
-
-
-Result:
 The simulation successfully measured the distance between the ultrasonic sensor  HC-SR04 and the object. The real-time distance values were accurately displayed on the serial monitor in centimeters.
